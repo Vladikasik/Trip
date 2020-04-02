@@ -12,6 +12,8 @@ import androidx.annotation.Nullable;
 
 import com.example.trip.Data.Place;
 import com.example.trip.Data.Town;
+import com.example.trip.Fragments.PlacesFragment;
+import com.example.trip.MainActivity;
 import com.example.trip.R;
 
 import java.util.ArrayList;
@@ -36,14 +38,19 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
 
         // TODO Implement view setup and view itself in town_adapter_item.xml
 
+
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle args = new Bundle();
-                args.putString("town", place.getName());
+                if (mContext instanceof MainActivity) {
+                    Bundle args = new Bundle();
+                    args.putString("town", place.getName());
+                    PlacesFragment ls = new PlacesFragment();
+                    ls.setArguments(args);
+                    ((MainActivity)mContext).changeFragment(ls, true);
+                }
             }
         });
-
 
         return convertView;
     }
