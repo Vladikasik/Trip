@@ -5,4 +5,10 @@ public class Place {
     int category;
 
     String info;
+
+    public Place(String name, int category){
+        this.name = name;
+        this.category = category;
+        this.info = "Info about this place will be updated";
+    }
 }
