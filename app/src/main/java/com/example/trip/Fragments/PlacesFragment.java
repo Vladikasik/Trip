@@ -27,7 +27,7 @@ public class PlacesFragment extends Fragment {
 
     ArrayList<Town> list = worldClass.getTowns();
 
-    final Town townf;
+    final Town town;
 
     String townArg;
 
@@ -41,7 +41,7 @@ public class PlacesFragment extends Fragment {
             @Override
             public void accept(Town town) {
                 if (town.getName() == name) {
-                    townf.setTown(town);
+                    town.setTown(town);
                 }
             }
         });
