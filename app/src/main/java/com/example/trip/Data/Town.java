@@ -21,4 +21,23 @@ public class Town {
     public String getName() {
         return name;
     }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public int getNumOfPlaces() {
+        return numOfPlaces;
+    }
+
+    public List<Place> getPlaces() {
+        return places;
+    }
+
+    public void setTown(Town town) {
+        this.name = town.getName();
+        this.country = town.getCountry();
+        this.numOfPlaces = town.getNumOfPlaces();
+        this.places = town.getPlaces();
+    }
 }

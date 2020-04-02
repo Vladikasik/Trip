@@ -7,6 +7,7 @@ import com.example.trip.Data.Town;
 import com.example.trip.Data.WorldClass;
 
 import java.util.ArrayList;
+import java.util.function.Consumer;
 
 public class PlacesFragment extends Fragment {
 
@@ -16,16 +17,24 @@ public class PlacesFragment extends Fragment {
 
     ArrayList<Town> list = worldClass.getTowns();
 
-    Town town;
+    final Town townf;
 
     String townArg;
 
-    private void getTown(ArrayList<Town> townsList){
+    private Town getTown(ArrayList<Town> townsList){
 
         this.townArg = getArguments().getString("town");
 
+        final String name = getArguments().getString("town");
 
-
+        townsList.forEach(new Consumer<Town>() {
+            @Override
+            public void accept(Town town) {
+                if (town.getName() == name) {
+                    townf.setTown(town);
+                }
+            }
+        });
     }
 
 }
