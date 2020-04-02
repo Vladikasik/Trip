@@ -6,13 +6,14 @@ import java.util.List;
 public class WorldClass {
 
     List<Town> towns = new ArrayList<>();
+    private static WorldClass sInstance;
 
-    private Place addPlace(String namePlace, int category){
+    private Place addPlace(String namePlace, int category) {
         Place place = new Place(namePlace, category);
         return place;
     }
 
-    private void addTown(String nameTown, String country, int numOfPlaces, List<Place> places){
+    private void addTown(String nameTown, String country, int numOfPlaces, List<Place> places) {
 
         Town town = new Town(nameTown, country, numOfPlaces);
 
@@ -45,16 +46,17 @@ public class WorldClass {
     }
 
 
-    public WorldClass(){
+    public WorldClass() {
         this.addAll();
     }
 
-//    public static WorldClass getInstance() {
-//        if (sInstance == null) {
-//            synchronized (DataRepository.class) {
-//                if (sInstance == null) {
-//                    sInstance = new DataRepository();
-//                }
-//            }
-//        }
+    public static WorldClass getInstance() {
+        if (sInstance == null) {
+            synchronized (WorldClass.class) {
+                if (sInstance == null) {
+                    sInstance = new WorldClass();
+                }
+            }
+        }return sInstance;
+    }
 }
