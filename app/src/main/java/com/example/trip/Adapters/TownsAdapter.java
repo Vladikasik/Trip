@@ -37,7 +37,6 @@ public class TownsAdapter extends ArrayAdapter<Town> {
         ((TextView) convertView.findViewById(R.id.TownName)).setText(town.getName());
         ((TextView) convertView.findViewById(R.id.CountryName)).setText(town.getCountry());
         ((TextView) convertView.findViewById(R.id.NumOfPlaces)).setText(Integer.toString(town.getNumOfPlaces()));
-
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
