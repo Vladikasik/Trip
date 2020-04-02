@@ -3,10 +3,10 @@ package com.example.trip.Data;
 import java.util.List;
 
 public class Town {
-    String name;
-    String country;
-    int numOfPlaces;
-    List<Place> places;
+    private String name;
+    private String country;
+    private int numOfPlaces;
+    private List<Place> places;
 
     public Town(String name, String country, int numOfPlaces){
         this.name = name;
@@ -16,5 +16,9 @@ public class Town {
 
     public void addPlaces(List<Place> places){
         this.places = places;
+    }
+
+    public String getName() {
+        return name;
     }
 }

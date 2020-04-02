@@ -1,6 +1,7 @@
 package com.example.trip.Adapters;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,15 @@ public class TownsAdapter extends ArrayAdapter<Town> {
         }
 
         // TODO Implement view setup and view itself in town_adapter_item.xml
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Bundle args = new Bundle();
+                args.putString("town", town.getName());
+            }
+        });
+
 
         return convertView;
     }
