@@ -2,11 +2,13 @@ package com.example.trip;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.trip.Fragments.TownsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,6 +16,8 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView mTextMessage;
     public BottomNavigationView navView;
+
+    private TownsFragment townsFragment = new TownsFragment();
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -24,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     mTextMessage.setText("Home");
+                    changeFragment(townsFragment, false);
                     return true;
                 case R.id.navigation_settings:
                     mTextMessage.setText("Settings");
@@ -45,6 +50,16 @@ public class MainActivity extends AppCompatActivity {
             mTextMessage = findViewById(R.id.message);
             navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
             navView.setOnNavigationItemReselectedListener(mOnNavigationItemReselectedListener);
+
+            getSupportFragmentManager().beginTransaction().add(R.id.place_holder, townsFragment).commit();
+        }
+    }
+
+    public void changeFragment(Fragment fragment, boolean addToBack) {
+        if (addToBack) {
+            getSupportFragmentManager().beginTransaction().replace(R.id.place_holder, fragment).addToBackStack(fragment.getClass().getName()).commit();
+        } else {
+            getSupportFragmentManager().beginTransaction().replace(R.id.place_holder, fragment).commit();
         }
     }
 }
