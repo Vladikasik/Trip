@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private BottomNavigationView.OnNavigationItemReselectedListener mOnNavigationItemReselectedListener;
-//            = menuItem -> {};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
