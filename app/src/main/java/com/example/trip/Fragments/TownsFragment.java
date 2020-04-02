@@ -19,7 +19,7 @@ import com.example.trip.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Towns_Fragment extends Fragment {
+public class TownsFragment extends Fragment {
 
     TownsAdapter adapter;
 
