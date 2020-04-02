@@ -5,12 +5,16 @@ import java.util.List;
 
 public class WorldClass {
 
-    List<Town> towns = new ArrayList<>();
+    private List<Town> towns = new ArrayList<>();
     private static WorldClass sInstance;
 
     private Place addPlace(String namePlace, int category) {
         Place place = new Place(namePlace, category);
         return place;
+    }
+
+    public List<Town> getTowns(){
+        return this.towns;
     }
 
     private void addTown(String nameTown, String country, int numOfPlaces, List<Place> places) {
