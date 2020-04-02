@@ -26,18 +26,17 @@ public class Town {
         return country;
     }
 
-    public int getNumOfPlaces() {
-        return numOfPlaces;
-    }
-
     public List<Place> getPlaces() {
         return places;
+    }
+
+    public int getNumOfPlaces(){
+        return numOfPlaces;
     }
 
     public void setTown(Town town) {
         this.name = town.getName();
         this.country = town.getCountry();
         this.numOfPlaces = town.getNumOfPlaces();
-        this.places = town.getPlaces();
     }
 }
