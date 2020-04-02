@@ -11,15 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.trip.Adapters.TownsAdapter;
 import com.example.trip.Data.Town;
 import com.example.trip.Data.WorldClass;
 import com.example.trip.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Towns_Fragment extends Fragment {
+public class TownsFragment extends Fragment {
 
-    TownAdapter adapter;
+    TownsAdapter adapter;
 
     WorldClass worldClass = WorldClass.getInstance();
 
@@ -35,8 +37,7 @@ public class Towns_Fragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        makeJournal( 20, false);
-        this.adapter = new JournalAdapter(getActivity(), this.lesList);
+        this.adapter = new TownsAdapter(getActivity(), (ArrayList<Town>) this.listTowns);
 
     }
 

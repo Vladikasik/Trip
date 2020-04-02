@@ -1,11 +1,10 @@
 package com.example.trip.Data;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class WorldClass {
 
-    private List<Town> towns = new ArrayList<>();
+    private ArrayList<Town> towns = new ArrayList<>();
     private static WorldClass sInstance;
 
     private Place addPlace(String namePlace, int category) {
@@ -13,11 +12,11 @@ public class WorldClass {
         return place;
     }
 
-    public List<Town> getTowns(){
+    public ArrayList<Town> getTowns(){
         return this.towns;
     }
 
-    private void addTown(String nameTown, String country, int numOfPlaces, List<Place> places) {
+    private void addTown(String nameTown, String country, int numOfPlaces, ArrayList<Place> places) {
 
         Town town = new Town(nameTown, country, numOfPlaces);
 
@@ -28,7 +27,7 @@ public class WorldClass {
 
     private void addAll() {
 
-        List<Place> places = new ArrayList<>();
+        ArrayList<Place> places = new ArrayList<>();
 
         places.add(addPlace("The Red Square", 0));
         places.add(addPlace("Novodevichy Convent", 666));
