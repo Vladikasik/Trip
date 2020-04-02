@@ -16,7 +16,7 @@ public class Town {
     }
 
     public Town(){
-        
+
     }
 
     public void addPlaces(ArrayList<Place> places){
