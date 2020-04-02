@@ -34,8 +34,6 @@ public class PlacesFragment extends Fragment {
 
     private void getTown(ArrayList<Town> townsList){
 
-        this.townArg = getArguments().getString("town");
-
         final String name = getArguments().getString("town");
 
         townsList.forEach(new Consumer<Town>() {

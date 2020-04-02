@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -35,9 +36,11 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.town_adapter_item, null);
         }
-
-        // TODO Implement view setup and view itself in town_adapter_item.xml
-
+//
+//        // TODO Implement view setup and view itself in town_adapter_item.xml
+//        ((TextView) convertView.findViewById(R.id.TownName)).setText(les.name);
+//        ((TextView) convertView.findViewById(R.id.CountryName)).setText(les.numOfPlaces);
+//        ((TextView) convertView.findViewById(R.id.NumOfPlaces)).setText(les.country);
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
