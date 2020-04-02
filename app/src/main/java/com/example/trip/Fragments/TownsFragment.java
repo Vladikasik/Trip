@@ -25,7 +25,7 @@ public class TownsFragment extends Fragment {
 
     WorldClass worldClass = WorldClass.getInstance();
 
-    List<Town> listTowns = worldClass.getTowns();
+    ArrayList<Town> listTowns = worldClass.getTowns();
 
     @Nullable
     @Override
@@ -37,7 +37,7 @@ public class TownsFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.adapter = new TownsAdapter(getActivity(), (ArrayList<Town>) this.listTowns);
+        this.adapter = new TownsAdapter(getActivity(), this.listTowns);
 
     }
 
