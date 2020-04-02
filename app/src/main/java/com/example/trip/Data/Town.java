@@ -15,6 +15,10 @@ public class Town {
         this.numOfPlaces = numOfPlaces;
     }
 
+    public Town(){
+        
+    }
+
     public void addPlaces(ArrayList<Place> places){
         this.places = places;
     }
@@ -33,10 +37,6 @@ public class Town {
 
     public ArrayList<Place> getPlaces() {
         return places;
-    }
-
-    public int getNumOfPlaces(){
-        return numOfPlaces;
     }
 
     public void setTown(Town town) {

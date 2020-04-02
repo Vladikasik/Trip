@@ -7,7 +7,7 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/place_list"
+        android:id="@+id/listPlaces"
         android:divider="@android:color/transparent"
         android:dividerHeight="10.0sp"
         android:padding="4dip"

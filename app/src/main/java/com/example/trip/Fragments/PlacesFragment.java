@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.trip.Adapters.PlacesAdapter;
 import com.example.trip.Adapters.TownsAdapter;
+import com.example.trip.Data.Place;
 import com.example.trip.Data.Town;
 import com.example.trip.Data.WorldClass;
 import com.example.trip.R;
@@ -27,7 +28,7 @@ public class PlacesFragment extends Fragment {
 
     ArrayList<Town> list = worldClass.getTowns();
 
-    final Town town;
+    final Town townf;
 
     String townArg;
 
@@ -41,15 +42,18 @@ public class PlacesFragment extends Fragment {
             @Override
             public void accept(Town town) {
                 if (town.getName() == name) {
-                    town.setTown(town);
+                    townf.setTown(town);
                 }
             }
         });
+
+
     }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        getTown(this.list);
         return inflater.inflate(R.layout.town_fragment, container, false);
     }
 
@@ -57,6 +61,7 @@ public class PlacesFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         this.adapter = new PlacesAdapter(getActivity(), this.townf.getPlaces());
 
     }
@@ -67,4 +72,7 @@ public class PlacesFragment extends Fragment {
         ((ListView) getView().findViewById(R.id.town_list)).setAdapter(this.adapter);
     }
 
+    public PlacesFragment(){
+        townf = new Town();
+    }
 }
