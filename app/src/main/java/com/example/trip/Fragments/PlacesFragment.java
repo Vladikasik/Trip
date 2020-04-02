@@ -30,11 +30,7 @@ public class PlacesFragment extends Fragment {
 
     final Town townf;
 
-    String townArg;
-
     private void getTown(ArrayList<Town> townsList){
-
-        this.townArg = getArguments().getString("town");
 
         final String name = getArguments().getString("town");
 
@@ -53,26 +49,25 @@ public class PlacesFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        getTown(this.list);
-        return inflater.inflate(R.layout.town_fragment, container, false);
+        return inflater.inflate(R.layout.place_fragment, container, false);
     }
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        this.adapter = new PlacesAdapter(getActivity(), this.townf.getPlaces());
+        this.adapter = new PlacesAdapter(getActivity(), townf.getPlaces());
 
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((ListView) getView().findViewById(R.id.town_list)).setAdapter(this.adapter);
+        ((ListView) getView().findViewById(R.id.listPlaces)).setAdapter(this.adapter);
     }
 
     public PlacesFragment(){
         townf = new Town();
+        getTown(this.list);
     }
 }
