@@ -1,12 +1,13 @@
 package com.example.trip.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Town {
     private String name;
     private String country;
     private int numOfPlaces;
-    private List<Place> places;
+    private ArrayList<Place> places;
 
     public Town(String name, String country, int numOfPlaces){
         this.name = name;
@@ -14,7 +15,7 @@ public class Town {
         this.numOfPlaces = numOfPlaces;
     }
 
-    public void addPlaces(List<Place> places){
+    public void addPlaces(ArrayList<Place> places){
         this.places = places;
     }
 
@@ -30,7 +31,7 @@ public class Town {
         return numOfPlaces;
     }
 
-    public List<Place> getPlaces() {
+    public ArrayList<Place> getPlaces() {
         return places;
     }
 
