@@ -1,13 +1,16 @@
 package com.example.trip.Fragments;
 
+import androidx.fragment.app.Fragment;
+
+import com.example.trip.Adapters.PlacesAdapter;
 import com.example.trip.Data.Town;
 import com.example.trip.Data.WorldClass;
 
 import java.util.ArrayList;
 
-public class PlacesFragment extends PlacesFragment{
+public class PlacesFragment extends Fragment {
 
-//    PlacesAdapter adapter;
+    PlacesAdapter adapter;
 
     WorldClass worldClass = WorldClass.getInstance();
 
