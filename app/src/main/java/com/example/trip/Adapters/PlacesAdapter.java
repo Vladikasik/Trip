@@ -36,11 +36,10 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.town_adapter_item, null);
         }
-//
-//        // TODO Implement view setup and view itself in town_adapter_item.xml
-//        ((TextView) convertView.findViewById(R.id.TownName)).setText(les.name);
-//        ((TextView) convertView.findViewById(R.id.CountryName)).setText(les.numOfPlaces);
-//        ((TextView) convertView.findViewById(R.id.NumOfPlaces)).setText(les.country);
+
+        ((TextView) convertView.findViewById(R.id.TownName)).setText(place.getName());
+        ((TextView) convertView.findViewById(R.id.CountryName)).setText(Integer.toString(place.getCategory()));
+        //((TextView) convertView.findViewById(R.id.NumOfPlaces)).setText(les.country);
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
