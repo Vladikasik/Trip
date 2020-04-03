@@ -30,22 +30,6 @@ public class PlacesFragment extends Fragment {
 
     final Town townf;
 
-    private void getTown(ArrayList<Town> townsList){
-
-        final String name = getArguments().getString("town");
-
-        townsList.forEach(new Consumer<Town>() {
-            @Override
-            public void accept(Town town) {
-                if (town.getName() == name) {
-                    townf.setTown(town);
-                }
-            }
-        });
-
-
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -68,6 +52,5 @@ public class PlacesFragment extends Fragment {
 
     public PlacesFragment(){
         townf = new Town();
-        getTown(this.list);
     }
 }
