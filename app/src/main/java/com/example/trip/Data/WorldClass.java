@@ -36,14 +36,14 @@ public class WorldClass {
 
         addTown("Moscow", "Russia", places.size(), places);
 
-        places.clear();
+        ArrayList<Place> placest = new ArrayList<>();
 
-        places.add(addPlace("Sydney jopera", 5));
-        places.add(addPlace("Sydney port", 3));
-        places.add(addPlace("Sydney aquarium", 6));
-        places.add(addPlace("Purnululu National park", 2));
+        placest.add(addPlace("Sydney jopera", 5));
+        placest.add(addPlace("Sydney port", 3));
+        placest.add(addPlace("Sydney aquarium", 6));
+        placest.add(addPlace("Purnululu National park", 2));
 
-        addTown("Sydney", "Australia", places.size(), places);
+        addTown("Sydney", "Australia", places.size(), placest);
 
 
     }
