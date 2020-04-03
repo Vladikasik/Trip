@@ -28,7 +28,11 @@ public class PlacesFragment extends Fragment {
 
     ArrayList<Town> list = worldClass.getTowns();
 
-    final Town townf;
+    private final Town townf;
+
+    public PlacesFragment(){
+        townf = new Town();
+    }
 
     @Nullable
     @Override
@@ -40,17 +44,20 @@ public class PlacesFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.adapter = new PlacesAdapter(getActivity(), townf.getPlaces());
-
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        list.forEach(new Consumer<Town>() {
+            @Override
+            public void accept(Town town) {
+                if (town.getName() == getArguments().getString("town")) {
+                    townf.setTown(town);
+                }
+            }
+        });
+        this.adapter = new PlacesAdapter(getActivity(), townf.getPlaces());
         ((ListView) getView().findViewById(R.id.listPlaces)).setAdapter(this.adapter);
-    }
-
-    public PlacesFragment(){
-        townf = new Town();
     }
 }
