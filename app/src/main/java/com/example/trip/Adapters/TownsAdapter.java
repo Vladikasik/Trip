@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.trip.Data.Town;
+import com.example.trip.Fragments.PlacesFragment;
+import com.example.trip.MainActivity;
 import com.example.trip.R;
 
 import java.util.ArrayList;
@@ -43,6 +45,9 @@ public class TownsAdapter extends ArrayAdapter<Town> {
             public void onClick(View view) {
                 Bundle args = new Bundle();
                 args.putString("town", town.getName());
+                PlacesFragment pf = new PlacesFragment();
+                pf.setArguments(args);
+                ((MainActivity) mContext).changeFragment(pf, true);
             }
         });
 

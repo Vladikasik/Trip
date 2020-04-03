@@ -30,44 +30,24 @@ public class PlacesFragment extends Fragment {
 
     final Town townf;
 
-    String townArg;
-
-    private void getTown(ArrayList<Town> townsList){
-
-        final String name = getArguments().getString("town");
-
-        townsList.forEach(new Consumer<Town>() {
-            @Override
-            public void accept(Town town) {
-                if (town.getName() == name) {
-                    townf.setTown(town);
-                }
-            }
-        });
-
-
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        getTown(this.list);
-        return inflater.inflate(R.layout.town_fragment, container, false);
+        return inflater.inflate(R.layout.place_fragment, container, false);
     }
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        this.adapter = new PlacesAdapter(getActivity(), this.townf.getPlaces());
+        this.adapter = new PlacesAdapter(getActivity(), townf.getPlaces());
 
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        ((ListView) getView().findViewById(R.id.town_list)).setAdapter(this.adapter);
+        ((ListView) getView().findViewById(R.id.listPlaces)).setAdapter(this.adapter);
     }
 
     public PlacesFragment(){
