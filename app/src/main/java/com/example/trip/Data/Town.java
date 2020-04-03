@@ -43,5 +43,6 @@ public class Town {
         this.name = town.getName();
         this.country = town.getCountry();
         this.numOfPlaces = town.getNumOfPlaces();
+        this.places = town.getPlaces();
     }
 }
