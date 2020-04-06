@@ -5,27 +5,23 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.trip.Data.Place;
-import com.example.trip.Data.Town;
-import com.example.trip.Fragments.EachPlaceFragment;
 import com.example.trip.Fragments.PlacesFragment;
 import com.example.trip.MainActivity;
 import com.example.trip.R;
 
 import java.util.ArrayList;
 
-public class PlacesAdapter extends ArrayAdapter<Place> {
-
+public class EachPlaceAdapter {
     private Context mContext;
 
-    public PlacesAdapter(Context context, ArrayList<Place> arr) {
-        super(context, R.layout.town_adapter_item, arr);
+    public EachPlaceAdapter(Context context, ArrayList<Place> arr) {
+        super(context, R.layout.place_item, arr);
         this.mContext = context;
     }
 
@@ -47,8 +43,8 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
             public void onClick(View view) {
                 if (mContext instanceof MainActivity) {
                     Bundle args = new Bundle();
-                    args.putString("town", place.getName(), );
-                    EachPlaceFragment ls = new EachPlaceFragment();
+                    args.putString("town", place.getName());
+                    PlacesFragment ls = new PlacesFragment();
                     ls.setArguments(args);
                     ((MainActivity)mContext).changeFragment(ls, true);
                 }
