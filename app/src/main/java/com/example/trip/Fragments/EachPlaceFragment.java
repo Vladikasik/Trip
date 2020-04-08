@@ -11,30 +11,20 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.trip.Adapters.EachPlaceAdapter;
+import com.example.trip.Data.Place;
 import com.example.trip.Data.Town;
-import com.example.trip.Data.WorldClass;
 import com.example.trip.R;
 
-import java.util.ArrayList;
 import java.util.function.Consumer;
 
 public class EachPlaceFragment extends Fragment {
+
     EachPlaceAdapter adapter;
-
-    WorldClass worldClass = WorldClass.getInstance();
-
-    ArrayList<Town> list = worldClass.getTowns();
-
-    private final Town townf;
-
-    public EachPlaceFragment(){
-        townf = new Town();
-    }
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.place_fragment, container, false);
+        return inflater.inflate(R.layout.place_item, container, false);
     }
 
 
@@ -46,15 +36,13 @@ public class EachPlaceFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        list.forEach(new Consumer<Town>() {
-            @Override
-            public void accept(Town town) {
-                if (town.getName() == getArguments().getString("place")) {
-                    townf.setTown(town);
-                }
-            }
-        });
-        this.adapter = new EachPlaceAdapter(getActivity(), townf.getPlaces());
-        ((ListView) getView().findViewById(R.id.listPlaces)).setAdapter(this.adapter);
+
+        String[] args = getArguments().getString("place").split("#");
+
+        Place place = new Place(args[0], Integer. parseInt(args[1]) , args[2]);
+
+        this.adapter = new EachPlaceAdapter(getActivity(), place);
+
+        //((ListView) getView().findViewById(R.id.listPlaces)).setAdapter(this.adapter);
     }
 }

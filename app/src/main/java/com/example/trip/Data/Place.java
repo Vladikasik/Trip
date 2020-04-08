@@ -6,10 +6,10 @@ public class Place {
 
     String info;
 
-    public Place(String name, int category){
+    public Place(String name, int category, String info){
         this.name = name;
         this.category = category;
-        this.info = "Info about this place will be updated";
+        this.info = info;
     }
 
     public String getName() {
@@ -23,4 +23,6 @@ public class Place {
     public String getInfo() {
         return info;
     }
+
+
 }

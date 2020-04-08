@@ -8,7 +8,8 @@ public class WorldClass {
     private static WorldClass sInstance;
 
     private Place addPlace(String namePlace, int category) {
-        Place place = new Place(namePlace, category);
+        String info = "This info will be updated";
+        Place place = new Place(namePlace, category, info);
         return place;
     }
 
