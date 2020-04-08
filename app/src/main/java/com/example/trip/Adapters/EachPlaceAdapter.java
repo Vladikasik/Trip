@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,40 +17,27 @@ import com.example.trip.MainActivity;
 import com.example.trip.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class EachPlaceAdapter {
+public class EachPlaceAdapter extends ArrayAdapter<Place> {
     private Context mContext;
-
-    public EachPlaceAdapter(Context context, ArrayList<Place> arr) {
-        super(context, R.layout.place_item, arr);
+    private Place place;
+    public EachPlaceAdapter(Context context, Place place) {
+        super(context, R.layout.place_item, (List<Place>) place);
         this.mContext = context;
+        this.place = place;
     }
 
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        final Place place = getItem(position);
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(mContext).inflate(R.layout.town_adapter_item, null);
+            convertView = LayoutInflater.from(mContext).inflate(R.layout.place_item, null);
         }
 
-        ((TextView) convertView.findViewById(R.id.TownName)).setText(place.getName());
-        ((TextView) convertView.findViewById(R.id.CountryName)).setText(Integer.toString(place.getCategory()));
-        //((TextView) convertView.findViewById(R.id.NumOfPlaces)).setText(les.country);
-
-        convertView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mContext instanceof MainActivity) {
-                    Bundle args = new Bundle();
-                    args.putString("town", place.getName());
-                    PlacesFragment ls = new PlacesFragment();
-                    ls.setArguments(args);
-                    ((MainActivity)mContext).changeFragment(ls, true);
-                }
-            }
-        });
+        ((TextView) convertView.findViewById(R.id.Title)).setText(this.place.getName());
+        ((TextView) convertView.findViewById(R.id.Text)).setText(this.place.getInfo());
 
         return convertView;
     }

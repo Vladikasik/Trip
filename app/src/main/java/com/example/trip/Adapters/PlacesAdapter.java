@@ -47,7 +47,7 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
             public void onClick(View view) {
                 if (mContext instanceof MainActivity) {
                     Bundle args = new Bundle();
-                    args.putString("place", place.getName() );
+                    args.putString("place", place.getName()+ "#" + place.getCategory() +"#" + place.getInfo());
                     EachPlaceFragment ls = new EachPlaceFragment();
                     ls.setArguments(args);
                     ((MainActivity)mContext).changeFragment(ls, true);
