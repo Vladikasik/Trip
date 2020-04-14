@@ -20,7 +20,7 @@ public class Settings extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_fragment);
         //create an ArrayList object to store selected items
-        selectedItems=new ArrayList<String>();
+        selectedItems = new ArrayList<String>();
 
 
     }
@@ -34,11 +34,11 @@ public class Settings extends Activity {
     public void onStart(){
         super.onStart();
         //create an instance of ListView
-        ListView chl=(ListView) findViewById(R.id.checkable_list);
+        ListView chl= findViewById(R.id.checkable_list);
         //set multiple selection mode
         chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         String[] items={"English","Chinese","French","German","Italian","Khmer"};
-        //supply data itmes to ListView
+        //supply data items to ListView
         ArrayAdapter<String> aa=new ArrayAdapter<String>(this,R.layout.checkable_list_layout,R.id.txt_title,items);
         chl.setAdapter(aa);
         //set OnItemClickListener

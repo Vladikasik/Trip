@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.trip.Fragments.SettingFragment;
 import com.example.trip.Fragments.TownsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -19,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public BottomNavigationView navView;
 
     private TownsFragment townsFragment = new TownsFragment();
+    private SettingFragment settingFragment = new SettingFragment();
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -33,14 +35,20 @@ public class MainActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_settings:
                     mTextMessage.setText("Settings");
-                    startActivity(new Intent(MainActivity.this, Settings.class));
+                    //startActivity(new Intent(MainActivity.this, Settings.class));
+                    changeFragment(settingFragment, false);
                     return true;
             }
             return false;
         }
     };
 
-    private BottomNavigationView.OnNavigationItemReselectedListener mOnNavigationItemReselectedListener;
+    private BottomNavigationView.OnNavigationItemReselectedListener mOnNavigationItemReselectedListener = new BottomNavigationView.OnNavigationItemReselectedListener() {
+        @Override
+        public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
