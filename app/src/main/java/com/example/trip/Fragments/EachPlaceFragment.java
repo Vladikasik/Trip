@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,8 +19,6 @@ import com.example.trip.R;
 import java.util.function.Consumer;
 
 public class EachPlaceFragment extends Fragment {
-
-    EachPlaceAdapter adapter;
 
     @Nullable
     @Override
@@ -39,10 +38,12 @@ public class EachPlaceFragment extends Fragment {
 
         String[] args = getArguments().getString("place").split("#");
 
-        Place place = new Place(args[0], Integer. parseInt(args[1]) , args[2]);
+        //Place place = new Place(args[0], Integer. parseInt(args[1]) , args[2]);
 
-        this.adapter = new EachPlaceAdapter(getActivity(), place);
+        TextView title = getView().findViewById(R.id.Title);
+        title.setText(args[0]);
 
-        //((ListView) getView().findViewById(R.id.listPlaces)).setAdapter(this.adapter);
+        TextView info = getView().findViewById(R.id.Text);
+        info.setText(args[2]);
     }
 }
