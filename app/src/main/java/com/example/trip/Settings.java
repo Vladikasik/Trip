@@ -11,24 +11,32 @@ import android.widget.Toast;
 import android.widget.ListView;
 import android.view.View;
 
+import com.example.trip.R;
+
 public class Settings extends Activity {
     ArrayList<String> selectedItems;
     protected void onCreate(Bundle savedInstanceState) {
         //TODO Auto-generated method stub
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.settings_fragment);
         //create an ArrayList object to store selected items
         selectedItems=new ArrayList<String>();
 
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.bottom_nav_menu, menu);
+        return true;
+    }
+
     public void onStart(){
         super.onStart();
         //create an instance of ListView
-        ListView chl=(ListView) findViewById(R.id.check_list);
+        ListView chl=(ListView) findViewById(R.id.checkable_list);
         //set multiple selection mode
-        chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
+        chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
         String[] items={"English","Chinese","French","German","Italian","Khmer"};
         //supply data itmes to ListView
         ArrayAdapter<String> aa=new ArrayAdapter<String>(this,R.layout.checkable_list_layout,R.id.txt_title,items);
