@@ -1,11 +1,13 @@
 package com.example.trip.Fragments;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,10 +18,25 @@ import androidx.fragment.app.Fragment;
 
 import com.example.trip.R;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.ArrayList;
+
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class SettingFragment extends Fragment {
     private ArrayList<String> selectedItems;
+
+    private TextView mTextViewReplyFromServer;
+    private String Answer;
 
     @Nullable
     @Override
@@ -67,8 +84,53 @@ public class SettingFragment extends Fragment {
             if(selItems=="")
                 selItems=item;
             else
-                selItems +="/"+item;
+                selItems +=";"+item;
         }
-        Toast.makeText(getContext(), selItems, Toast.LENGTH_LONG).show();
+        sendMessage(selItems);
+    }
+
+    private void sendMessage(final String msg) {
+
+        final Handler handler = new Handler();
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    //Replace below IP with the IP of that device in which server socket open.
+                    //If you change port then change the port number in the server side code also.
+                    Socket s = new Socket("194.67.78.210", 1024);
+
+                    OutputStream out = s.getOutputStream();
+
+                    PrintWriter output = new PrintWriter(out);
+
+                    output.println(msg);
+                    output.flush();
+                    BufferedReader input = new BufferedReader(new InputStreamReader(s.getInputStream()));
+                    final String st = input.readLine();
+
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            String s = msg;
+                            if (st.trim().length() != 0)
+                                Answer = s + "\nFrom Server : " + st;
+                        }
+                    });
+
+                    output.close();
+                    out.close();
+                    s.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        thread.start();
+
+        System.out.println(Answer);
     }
 }
