@@ -36,8 +36,8 @@ public class EachPlaceAdapter extends ArrayAdapter<Place> {
             convertView = LayoutInflater.from(mContext).inflate(R.layout.place_item, null);
         }
 
-        ((TextView) convertView.findViewById(R.id.Title)).setText(this.place.getName());
-        ((TextView) convertView.findViewById(R.id.Text)).setText(this.place.getInfo());
+        ((TextView) convertView.findViewById(R.id.Title)).setText(this.place.ObjectName);
+        ((TextView) convertView.findViewById(R.id.Text)).setText(this.place.ObjectInformation);
 
         return convertView;
     }

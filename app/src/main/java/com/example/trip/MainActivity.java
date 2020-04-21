@@ -13,6 +13,8 @@ import com.example.trip.Fragments.SettingFragment;
 import com.example.trip.Fragments.TownsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.io.IOException;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -49,6 +51,9 @@ public class MainActivity extends AppCompatActivity {
 
         }
     };
+
+    public MainActivity() throws IOException {
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

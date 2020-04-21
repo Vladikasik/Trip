@@ -16,6 +16,7 @@ import com.example.trip.Data.Town;
 import com.example.trip.Data.WorldClass;
 import com.example.trip.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,6 +27,9 @@ public class TownsFragment extends Fragment {
     WorldClass worldClass = WorldClass.getInstance();
 
     ArrayList<Town> listTowns = worldClass.getTowns();
+
+    public TownsFragment() throws IOException {
+    }
 
     @Nullable
     @Override

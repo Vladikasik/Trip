@@ -17,6 +17,7 @@ import com.example.trip.Data.Town;
 import com.example.trip.Data.WorldClass;
 import com.example.trip.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.function.Consumer;
 
@@ -30,7 +31,7 @@ public class PlacesFragment extends Fragment {
 
     private final Town townf;
 
-    public PlacesFragment(){
+    public PlacesFragment() throws IOException {
         townf = new Town();
     }
 

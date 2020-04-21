@@ -16,6 +16,7 @@ import com.example.trip.Fragments.PlacesFragment;
 import com.example.trip.MainActivity;
 import com.example.trip.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class TownsAdapter extends ArrayAdapter<Town> {
@@ -38,14 +39,19 @@ public class TownsAdapter extends ArrayAdapter<Town> {
         // TODO Implement view setup and view itself in town_adapter_item.xml
         ((TextView) convertView.findViewById(R.id.TownName)).setText(town.getName());
         ((TextView) convertView.findViewById(R.id.CountryName)).setText(town.getCountry());
-        ((TextView) convertView.findViewById(R.id.NumOfPlaces)).setText(Integer.toString(town.getNumOfPlaces()));
+        ((TextView) convertView.findViewById(R.id.NumOfPlaces)).setText(Integer.toString(town.numOfPlaces()));
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle args = new Bundle();
                 args.putString("town", town.getName());
-                PlacesFragment pf = new PlacesFragment();
+                PlacesFragment pf = null;
+                try {
+                    pf = new PlacesFragment();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 pf.setArguments(args);
                 ((MainActivity) mContext).changeFragment(pf, true);
             }

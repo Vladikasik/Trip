@@ -6,43 +6,38 @@ import java.util.List;
 public class Town {
     private String name;
     private String country;
-    private int numOfPlaces;
-    private ArrayList<Place> places;
+    private ArrayList<Place> places = new ArrayList<Place>();
 
-    public Town(String name, String country, int numOfPlaces){
+    public Town(String name, String country){
         this.name = name;
         this.country = country;
-        this.numOfPlaces = numOfPlaces;
     }
 
     public Town(){
 
     }
 
-    public void addPlaces(ArrayList<Place> places){
-        this.places = places;
+    public void addPlace(Place place){
+        this.places.add(place);
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
     public String getCountry() {
         return country;
     }
 
-    public int getNumOfPlaces() {
-        return numOfPlaces;
-    }
 
     public ArrayList<Place> getPlaces() {
         return places;
     }
 
-    public void setTown(Town town) {
+    public int numOfPlaces(){ return this.places.size();}
+
+    public void setTown(Town town){
         this.name = town.getName();
         this.country = town.getCountry();
-        this.numOfPlaces = town.getNumOfPlaces();
         this.places = town.getPlaces();
     }
+
 }
