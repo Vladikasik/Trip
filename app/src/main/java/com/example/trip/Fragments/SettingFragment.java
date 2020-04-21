@@ -19,10 +19,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.trip.R;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -106,6 +108,7 @@ public class SettingFragment extends Fragment {
                     //If you change port then change the port number in the server side code also.
                     Socket s = new Socket("194.67.78.210", 1024);
 
+
                     OutputStream out = s.getOutputStream();
 
                     PrintWriter output = new PrintWriter(out);
@@ -113,6 +116,7 @@ public class SettingFragment extends Fragment {
                     output.println(msg);
                     output.flush();
                     BufferedReader input = new BufferedReader(new InputStreamReader(s.getInputStream()));
+
                     final String st = input.readLine();
 
                     handler.post(new Runnable() {
@@ -123,7 +127,7 @@ public class SettingFragment extends Fragment {
 
                             if (st != null)
                                 Answer = st ;
-                                Toast.makeText(getContext(), Answer, Toast.LENGTH_LONG).show();
+                                System.out.println(Answer.length());
                                 makeJson(Answer);
                         }
                     });
@@ -143,7 +147,7 @@ public class SettingFragment extends Fragment {
 
     private void makeJson(String data){
         try {
-            JSONObject jsonObject = new JSONObject(data);
+            JSONArray jsonObject = new JSONArray(data);
             writeToJson(jsonObject);
         }catch (JSONException err){
             err.printStackTrace();
@@ -151,11 +155,14 @@ public class SettingFragment extends Fragment {
 
     }
 
-    private void writeToJson(JSONObject jsonObject){
+    private void writeToJson(JSONArray jsonObject){
         try {
-            FileWriter file = new FileWriter("test.json");
+            File fileName = new File(getContext().getFilesDir(), "places.json");
+            Toast.makeText(getContext(), fileName.toString(), Toast.LENGTH_LONG).show();
+            FileWriter file = new FileWriter(fileName);
             file.write(String.valueOf(jsonObject));
             file.close();
+            System.out.println("File was succesfully downloaded");
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
