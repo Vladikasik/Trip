@@ -2,6 +2,7 @@ package com.example.trip.Fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +19,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.trip.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -36,7 +41,7 @@ public class SettingFragment extends Fragment {
     private ArrayList<String> selectedItems;
 
     private TextView mTextViewReplyFromServer;
-    private String Answer;
+    private String Answer = "kek";
 
     @Nullable
     @Override
@@ -52,7 +57,7 @@ public class SettingFragment extends Fragment {
         ListView chl= getView().findViewById(R.id.checkable_list);
         //set multiple selection mode
         chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        String[] items={"English","Chinese","French","German","Italian","Khmer"};
+        String[] items={"АнглийскийэыЪ","Chinese","French","German","Italian","Khmer"};
         //supply data items to ListView
         ArrayAdapter<String> aa=new ArrayAdapter<String>(requireActivity(), R.layout.checkable_list_layout, R.id.txt_title, items);
         chl.setAdapter(aa);
@@ -115,8 +120,11 @@ public class SettingFragment extends Fragment {
                         public void run() {
 
                             String s = msg;
-                            if (st.trim().length() != 0)
-                                Answer = s + "\nFrom Server : " + st;
+
+                            if (st != null)
+                                Answer = st ;
+                                Toast.makeText(getContext(), Answer, Toast.LENGTH_LONG).show();
+                                makeJson(Answer);
                         }
                     });
 
@@ -130,7 +138,27 @@ public class SettingFragment extends Fragment {
         });
 
         thread.start();
+    }
 
-        System.out.println(Answer);
+
+    private void makeJson(String data){
+        try {
+            JSONObject jsonObject = new JSONObject(data);
+            writeToJson(jsonObject);
+        }catch (JSONException err){
+            err.printStackTrace();
+        }
+
+    }
+
+    private void writeToJson(JSONObject jsonObject){
+        try {
+            FileWriter file = new FileWriter("test.json");
+            file.write(String.valueOf(jsonObject));
+            file.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 }
