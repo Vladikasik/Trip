@@ -5,6 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/TownName"
+        app:srcCompat="?attr/editTextBackground" />
+
     <TextView
         android:id="@+id/TownName"
         android:layout_width="wrap_content"

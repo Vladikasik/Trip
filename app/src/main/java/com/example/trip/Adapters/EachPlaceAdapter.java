@@ -46,6 +46,7 @@ public class EachPlaceAdapter extends ArrayAdapter<Place> {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                System.out.println("keeeeeeeeeeeeek");
                 openOnMap();
             }
         });
