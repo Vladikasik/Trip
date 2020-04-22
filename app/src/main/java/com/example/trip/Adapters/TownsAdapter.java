@@ -40,6 +40,7 @@ public class TownsAdapter extends ArrayAdapter<Town> {
         ((TextView) convertView.findViewById(R.id.TownName)).setText(town.getName());
         ((TextView) convertView.findViewById(R.id.CountryName)).setText(town.getCountry());
         ((TextView) convertView.findViewById(R.id.NumOfPlaces)).setText(Integer.toString(town.numOfPlaces()));
+        ((TextView) convertView.findViewById(R.id.text_country)).setText("Страна : ");
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override

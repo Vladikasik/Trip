@@ -40,7 +40,9 @@ public class PlacesAdapter extends ArrayAdapter<Place> {
 
         ((TextView) convertView.findViewById(R.id.TownName)).setText(place.ObjectName);
         ((TextView) convertView.findViewById(R.id.CountryName)).setText(place.ObjectCategory);
-        //((TextView) convertView.findViewById(R.id.NumOfPlaces)).setText(les.country);
+        ((TextView) convertView.findViewById(R.id.text_country)).setText("Категория : ");
+        convertView.findViewById(R.id.NumOfPlaces).setVisibility(View.GONE);
+        convertView.findViewById(R.id.text_numofplaces).setVisibility(View.GONE);
 
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
