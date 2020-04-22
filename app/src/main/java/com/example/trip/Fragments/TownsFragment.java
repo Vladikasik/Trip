@@ -24,7 +24,7 @@ public class TownsFragment extends Fragment {
 
     TownsAdapter adapter;
 
-    WorldClass worldClass = WorldClass.getInstance();
+    WorldClass worldClass = new WorldClass();
 
     ArrayList<Town> listTowns = worldClass.getTowns();
 

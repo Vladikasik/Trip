@@ -53,8 +53,11 @@ public class PlacesFragment extends Fragment {
         list.forEach(new Consumer<Town>() {
             @Override
             public void accept(Town town) {
-                if (town.getName() == getArguments().getString("town")) {
+                String townFromArguments = getArguments().getString("town");
+                String townFromLoop = town.getName();
+                if (townFromLoop.equals(townFromArguments)) {
                     townf.setTown(town);
+                    townf.printPlaces();
                 }
             }
         });

@@ -7,4 +7,8 @@ public class Place {
     public String ObjectTown;
     public String ObjectInformation;
     public String ObjectCoordinates;
+
+    public void print(){
+        System.out.println(ObjectName);
+    }
 }

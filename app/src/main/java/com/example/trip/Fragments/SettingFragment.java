@@ -127,6 +127,7 @@ public class SettingFragment extends Fragment {
 
                             if (st != null)
                                 Answer = st ;
+                                System.out.println("Receive - " + Answer);
                                 System.out.println("Symbols received = " + Answer.length());
                                 makeJson(Answer);
                         }

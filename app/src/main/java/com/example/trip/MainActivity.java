@@ -21,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mTextMessage;
     public BottomNavigationView navView;
 
-    private TownsFragment townsFragment = new TownsFragment();
-    private SettingFragment settingFragment = new SettingFragment();
+
+    TownsFragment townsFragment = new TownsFragment();
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -33,10 +33,18 @@ public class MainActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
                     mTextMessage.setText("Home");
+                    TownsFragment townsFragment = null;
+                    try {
+                        townsFragment = new TownsFragment();
+                        System.out.println("TownsFragment was successfully created");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     changeFragment(townsFragment, false);
                     return true;
                 case R.id.navigation_settings:
                     mTextMessage.setText("Settings");
+                    SettingFragment settingFragment = new SettingFragment();
                     //startActivity(new Intent(MainActivity.this, Settings.class));
                     changeFragment(settingFragment, false);
                     return true;

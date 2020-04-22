@@ -50,11 +50,13 @@ public class TownsAdapter extends ArrayAdapter<Town> {
                 PlacesFragment pf = null;
                 try {
                     pf = new PlacesFragment();
+                    System.out.println("PlacesFragment was successfully created");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 pf.setArguments(args);
                 ((MainActivity) mContext).changeFragment(pf, true);
+
             }
         });
 

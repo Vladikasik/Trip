@@ -40,4 +40,10 @@ public class Town {
         this.places = town.getPlaces();
     }
 
+    public void printPlaces(){
+        for (Place place : places){
+            place.print();
+        }
+    }
+
 }
