@@ -6,7 +6,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +24,7 @@ import java.util.List;
 public class EachPlaceAdapter extends ArrayAdapter<Place> {
     private Context mContext;
     private Place place;
+
     public EachPlaceAdapter(Context context, Place place) {
         super(context, R.layout.place_item, (List<Place>) place);
         this.mContext = context;
@@ -38,7 +41,22 @@ public class EachPlaceAdapter extends ArrayAdapter<Place> {
 
         ((TextView) convertView.findViewById(R.id.Title)).setText(this.place.ObjectName);
         ((TextView) convertView.findViewById(R.id.Text)).setText(this.place.ObjectInformation);
+        Button button = convertView.findViewById(R.id.go_map);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openOnMap();
+            }
+        });
 
         return convertView;
+    }
+
+
+    private void openOnMap(){
+        String coordinates = place.ObjectCoordinates;
+        System.out.println(coordinates);
+        Toast.makeText(getContext(), coordinates, Toast.LENGTH_LONG).show();
     }
 }

@@ -59,7 +59,7 @@ public class SettingFragment extends Fragment {
         ListView chl= getView().findViewById(R.id.checkable_list);
         //set multiple selection mode
         chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        String[] items={"АнглийскийэыЪ","Chinese","French","German","Italian","Khmer"};
+        String[] items={"Достопримечательности","Религиозные","Развлечения","Опера и балет","Интересные музеи","Научные музеи","Исторические музеи"};
         //supply data items to ListView
         ArrayAdapter<String> aa=new ArrayAdapter<String>(requireActivity(), R.layout.checkable_list_layout, R.id.txt_title, items);
         chl.setAdapter(aa);
@@ -127,7 +127,7 @@ public class SettingFragment extends Fragment {
 
                             if (st != null)
                                 Answer = st ;
-                                System.out.println(Answer.length());
+                                System.out.println("Symbols received = " + Answer.length());
                                 makeJson(Answer);
                         }
                     });
@@ -158,7 +158,6 @@ public class SettingFragment extends Fragment {
     private void writeToJson(JSONArray jsonObject){
         try {
             File fileName = new File(getContext().getFilesDir(), "places.json");
-            Toast.makeText(getContext(), fileName.toString(), Toast.LENGTH_LONG).show();
             FileWriter file = new FileWriter(fileName);
             file.write(String.valueOf(jsonObject));
             file.close();

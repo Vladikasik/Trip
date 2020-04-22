@@ -6,5 +6,5 @@ public class Place {
     public String ObjectCountry;
     public String ObjectTown;
     public String ObjectInformation;
-
+    public String ObjectCoordinates;
 }
