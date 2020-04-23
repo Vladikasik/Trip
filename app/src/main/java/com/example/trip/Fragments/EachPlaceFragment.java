@@ -4,8 +4,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -36,7 +38,7 @@ public class EachPlaceFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        String[] args = getArguments().getString("place").split("#");
+        final String[] args = getArguments().getString("place").split("#");
 
         //Place place = new Place(args[0], Integer. parseInt(args[1]) , args[2]);
 
@@ -45,5 +47,17 @@ public class EachPlaceFragment extends Fragment {
 
         TextView info = getView().findViewById(R.id.Text);
         info.setText(args[2]);
+
+        View convertView = getView();
+        Button button = convertView.findViewById(R.id.go_map);
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String coordinates = args[3];
+                System.out.println(coordinates);
+                Toast.makeText(getContext(), coordinates, Toast.LENGTH_LONG).show();
+            }
+        });
     }
 }

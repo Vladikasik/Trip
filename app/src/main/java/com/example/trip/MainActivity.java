@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     public BottomNavigationView navView;
 
 
-    TownsFragment townsFragment = new TownsFragment();
+    SettingFragment settingFragment = new SettingFragment();
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
             navView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
             navView.setOnNavigationItemReselectedListener(mOnNavigationItemReselectedListener);
 
-            getSupportFragmentManager().beginTransaction().add(R.id.place_holder, townsFragment).commit();
+            getSupportFragmentManager().beginTransaction().add(R.id.place_holder, settingFragment).commit();
         }
     }
 
