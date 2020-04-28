@@ -93,6 +93,10 @@ public class SettingFragment extends Fragment {
             else
                 selItems +=";"+item;
         }
+
+        Toast toast = Toast.makeText(getContext(),
+                "Ваши предпочтения были успешно сохранены", Toast.LENGTH_SHORT);
+        toast.show();
         sendMessage(selItems);
     }
 
