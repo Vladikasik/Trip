@@ -26,6 +26,8 @@ public class TownsFragment extends Fragment {
 
     WorldClass worldClass = new WorldClass();
 
+
+
     ArrayList<Town> listTowns = worldClass.getTowns();
 
     public TownsFragment() throws IOException {

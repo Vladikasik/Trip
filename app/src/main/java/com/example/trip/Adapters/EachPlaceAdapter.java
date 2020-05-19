@@ -1,6 +1,8 @@
 package com.example.trip.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,5 +61,10 @@ public class EachPlaceAdapter extends ArrayAdapter<Place> {
         String coordinates = place.ObjectCoordinates;
         System.out.println(coordinates);
         Toast.makeText(getContext(), coordinates, Toast.LENGTH_LONG).show();
+        String regex = " ";
+        String coor[] = coordinates.split(" ");
+        String uri = "geo:"+coor[0] + "," + coor[1];
+        Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+        mContext.startActivity(mapIntent);
     }
 }

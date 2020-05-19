@@ -1,5 +1,7 @@
 package com.example.trip.Fragments;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,8 +58,16 @@ public class EachPlaceFragment extends Fragment {
             public void onClick(View v) {
                 String coordinates = args[3];
                 System.out.println(coordinates);
+                System.out.println(coordinates);
                 Toast.makeText(getContext(), coordinates, Toast.LENGTH_LONG).show();
+                String regex = " ";
+                String coor[] = coordinates.split(" ");
+                String uri = "geo:"+coor[0] + "," + coor[1];
+                Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
+                startActivity(mapIntent);
             }
         });
+
+
     }
 }

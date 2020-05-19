@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -63,5 +64,9 @@ public class PlacesFragment extends Fragment {
         });
         this.adapter = new PlacesAdapter(getActivity(), townf.getPlaces());
         ((ListView) getView().findViewById(R.id.listPlaces)).setAdapter(this.adapter);
+
+
+        Button button = getView().findViewById(R.id.all_trip);
+        
     }
 }

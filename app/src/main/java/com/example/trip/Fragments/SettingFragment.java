@@ -1,5 +1,6 @@
 package com.example.trip.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -32,6 +33,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
@@ -110,8 +112,9 @@ public class SettingFragment extends Fragment {
                 try {
                     //Replace below IP with the IP of that device in which server socket open.
                     //If you change port then change the port number in the server side code also.
-                    Socket s = new Socket("194.67.78.210", 1024);
+                    Socket s = new Socket("194.67.78.210", 2048);
 
+                    s.setReceiveBufferSize(10000);
 
                     OutputStream out = s.getOutputStream();
 
@@ -153,7 +156,7 @@ public class SettingFragment extends Fragment {
     private void makeJson(String data){
         try {
             JSONArray jsonObject = new JSONArray(data);
-            writeToJson(jsonObject);
+            writeToJson(jsonObject  );
         }catch (JSONException err){
             err.printStackTrace();
         }
@@ -162,7 +165,7 @@ public class SettingFragment extends Fragment {
 
     private void writeToJson(JSONArray jsonObject){
         try {
-            File fileName = new File(getContext().getFilesDir(), "places.json");
+            File fileName = new File(getActivity().getFilesDir(), "places.json");
             FileWriter file = new FileWriter(fileName);
             file.write(String.valueOf(jsonObject));
             file.close();
