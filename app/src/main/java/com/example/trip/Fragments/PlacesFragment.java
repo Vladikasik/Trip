@@ -34,10 +34,11 @@ import java.util.ArrayList;
 import java.util.Objects;
 import java.util.function.Consumer;
 
+import static android.content.Context.LOCATION_SERVICE;
 import static androidx.core.content.ContextCompat.getSystemService;
 import static java.security.AccessController.getContext;
 
-public class PlacesFragment extends Fragment implements LocationListener{
+public class PlacesFragment extends Fragment implements LocationListener {
 
     private String location_coor;
 
@@ -46,8 +47,8 @@ public class PlacesFragment extends Fragment implements LocationListener{
     protected Context context;
     String lat;
     String provider;
-    protected String latitude,longitude;
-    protected boolean gps_enabled,network_enabled;
+    protected String latitude, longitude;
+    protected boolean gps_enabled, network_enabled;
 
     PlacesAdapter adapter;
 
@@ -66,14 +67,17 @@ public class PlacesFragment extends Fragment implements LocationListener{
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
 
-        if (ContextCompat.checkSelfPermission(Objects.requireNonNull(getContext()), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(Objects.requireNonNull(getContext()), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            locationManager = (LocationManager) getContext().getSystemService(LOCATION_SERVICE);
             locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, this);
             Location loc = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            this.location_coor = loc.getLatitude() + ", " + loc.getLongitude();
+            this.location_coor = loc.getLatitude() + ",+" + loc.getLongitude();
             System.out.println(this.location_coor);
+        }else{
+            ActivityCompat.requestPermissions(Objects.requireNonNull(getActivity()), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 99);
         }
 
-        LocationManager locationManager = (LocationManager) Objects.requireNonNull(getActivity()).getSystemService(Context.LOCATION_SERVICE);
+        LocationManager locationManager = (LocationManager) Objects.requireNonNull(getActivity()).getSystemService(LOCATION_SERVICE);
         assert locationManager != null;
 
         return inflater.inflate(R.layout.place_fragment, container, false);
@@ -115,14 +119,12 @@ public class PlacesFragment extends Fragment implements LocationListener{
                 mapIntent.setPackage("com.google.android.apps.maps");
                 startActivity(mapIntent);
 
-        }
-    });
+            }
+        });
 
-}
+    }
 
     private String getTravel() {
-
-
 
         String finish = "https://www.google.com/maps/dir/?api=1&origin=" + this.location_coor + "&destination=" + this.location_coor + "&travelmode=walkingg&waypoints=";
         for (Place place : townf.getPlaces()) {
