@@ -165,7 +165,7 @@ public class SettingFragment extends Fragment {
 
     private void writeToJson(JSONArray jsonObject){
         try {
-            File fileName = new File(getActivity().getFilesDir(), "places.json");
+            File fileName = new File(getContext().getFilesDir(), "places.json");
             FileWriter file = new FileWriter(fileName);
             file.write(String.valueOf(jsonObject));
             file.close();

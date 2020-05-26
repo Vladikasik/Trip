@@ -2,9 +2,16 @@ package com.example.trip;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.TextView;
@@ -14,8 +21,12 @@ import com.example.trip.Fragments.TownsFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.IOException;
+import java.util.Objects;
+
+import static java.security.AccessController.getContext;
 
 public class MainActivity extends AppCompatActivity {
+
 
 
     private TextView mTextMessage;
@@ -76,6 +87,8 @@ public class MainActivity extends AppCompatActivity {
 
             getSupportFragmentManager().beginTransaction().add(R.id.place_holder, townsFragment).commit();
         }
+
+
     }
 
     public void changeFragment(Fragment fragment, boolean addToBack) {

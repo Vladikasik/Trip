@@ -60,9 +60,7 @@ public class EachPlaceFragment extends Fragment {
                 System.out.println(coordinates);
                 System.out.println(coordinates);
                 Toast.makeText(getContext(), coordinates, Toast.LENGTH_LONG).show();
-                String regex = " ";
-                String coor[] = coordinates.split(" ");
-                String uri = "geo:"+coor[0] + "," + coor[1];
+                String uri = "https://www.google.com/maps/search/?api=1&query=" + coordinates;
                 Intent mapIntent = new Intent(android.content.Intent.ACTION_VIEW, Uri.parse(uri));
                 startActivity(mapIntent);
             }
